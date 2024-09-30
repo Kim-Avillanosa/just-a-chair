@@ -16,7 +16,11 @@ const ColorPalette: React.FC<Props> = ({ onColorChange }) => {
         "#32ff7e",
         "#ff3838",
         "#fff200",
-        "#3d3d3d"
+        "#3d3d3d",
+        "#6F1E51",
+        "#A3CB38",
+        "#F79F1F",
+        "#7d5fff"
     ];
 
     const handleColorClick = (color: string) => {

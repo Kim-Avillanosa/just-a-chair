@@ -77,7 +77,7 @@ const ChairViewer = () => {
                             <shadowMaterial opacity={0.5} />
                         </mesh>
                         <Chair {...materialOptions} />
-                        <OrbitControls />
+                        <OrbitControls  autoRotate autoRotateSpeed={5.0}/>
                     </Canvas>
                 </div>
             </div>
