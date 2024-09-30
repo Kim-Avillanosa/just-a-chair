@@ -2,7 +2,6 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useMemo, useState } from "react";
 import Chair, { ChairProperties } from "@/pages/component/chair";
-import { material } from "@/pages/constants/material";
 import ChairEditor from "./chair-editor";
 
 export type CanvasBackground = "light" | "dark";
