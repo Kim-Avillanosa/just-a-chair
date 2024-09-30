@@ -14,7 +14,7 @@ const ChairViewer = () => {
 
     const backgroundColor = useMemo(() => {
         if (background === "dark") {
-            return "#4b4b4b";
+            return "#222f3e";
         }
 
         return "#ffffff";

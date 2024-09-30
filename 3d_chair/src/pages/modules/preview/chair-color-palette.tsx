@@ -1,3 +1,4 @@
+import useAudio from "@/hooks/useAudio";
 import React, { useState } from "react";
 
 interface Props {
@@ -44,10 +45,13 @@ const ColorPalette: React.FC<Props> = ({ onColorChange }) => {
                 {predefinedColors.map((color) => (
                     <div
                         key={color}
-                        onClick={() => handleColorClick(color)}
+                        onClick={() => {
+
+                            handleColorClick(color)
+                        }}
                         style={{
-                            width: '40px',
-                            height: '40px',
+                            width: '80px',
+                            height: '80px',
                             cursor: 'pointer',
                             border: '1px solid #000',
                             borderRadius: '5px',
