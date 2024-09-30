@@ -5,7 +5,7 @@ interface Props {
 }
 
 const ColorPalette: React.FC<Props> = ({ onColorChange }) => {
-    const [selectedColor, setSelectedColor] = useState<string>("#00b894"); // Default color
+    const [selectedColor, setSelectedColor] = useState<string>("#a1662f"); // Default color
 
     const predefinedColors: string[] = [
         "#a1662f",
@@ -69,7 +69,7 @@ const ColorPalette: React.FC<Props> = ({ onColorChange }) => {
                     backgroundColor: selectedColor,
                 }}
             />
-            <p>Selected Color: {selectedColor}</p>
+            <p>Selected Color: <b>{selectedColor}</b></p>
         </div>
     );
 };
