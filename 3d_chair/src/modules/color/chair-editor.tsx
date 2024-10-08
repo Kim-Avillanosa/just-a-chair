@@ -3,11 +3,13 @@ import { CanvasBackground } from "./chair-viewer";
 
 interface Props {
     background: CanvasBackground;
+    isSpinning: boolean
+    onSpinningStateChanged: () => void
     onThemeChange: () => void;
     onColorChange: (value: string) => void
 }
 
-const ChairEditor: React.FC<Props> = ({ onThemeChange, onColorChange, background }) => {
+const ChairEditor: React.FC<Props> = ({ background, isSpinning, onThemeChange, onColorChange, onSpinningStateChanged }) => {
     return (
         <div>
             <h1>JUST A CHAIR 🪑</h1>
@@ -15,6 +17,10 @@ const ChairEditor: React.FC<Props> = ({ onThemeChange, onColorChange, background
             <hr />
             <button onClick={onThemeChange}>
                 {background === "light" ? "Lights off" : "Lights on"}
+            </button>
+
+            <button onClick={onSpinningStateChanged}>
+                {isSpinning === true ? "Stop spinning" : "Showcase mode"}
             </button>
             <ColorPalette onColorChange={onColorChange} />
         </div>
