@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
-import Page from "./component/page";
+import Page from "./modules/preview/component/page";
 import ChairViewer from "./modules/preview/chair-viewer";
 
 const geistSans = localFont({

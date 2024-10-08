@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useMemo, useState } from "react";
-import Chair, { ChairProperties } from "@/pages/component/chair";
+import Chair, { ChairProperties } from "@/pages/modules/preview/component/chair";
 import ChairEditor from "./chair-editor";
 
 export type CanvasBackground = "light" | "dark";
@@ -36,8 +36,7 @@ const ChairViewer = () => {
     }, [chairColor, background]);
 
     return (
-        <>
-            <div style={{ display: "flex", height: "100vh" }}>
+        <div style={{ display: "flex", height: "100vh" }}>
                 <div
                     style={{ flex: 1, borderRight: "1px solid #ccc", padding: "10px" }}
                 >
@@ -81,7 +80,6 @@ const ChairViewer = () => {
                     </Canvas>
                 </div>
             </div>
-        </>
     );
 };
 

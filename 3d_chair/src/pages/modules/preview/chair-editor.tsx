@@ -16,8 +16,6 @@ const ChairEditor: React.FC<Props> = ({ onThemeChange, onColorChange, background
             <button onClick={onThemeChange}>
                 {background === "light" ? "Lights off" : "Lights on"}
             </button>
-
-
             <ColorPalette onColorChange={onColorChange} />
         </div>
     );
