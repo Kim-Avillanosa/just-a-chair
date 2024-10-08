@@ -14,7 +14,7 @@ const ChairBackRest: React.FC<ChairProperties> = () => {
       position={[0, 3, -0.9]}
       args={[2, 2, 0.2]}
       radius={0.1}
-      smoothness={4}
+      smoothness={10}
       castShadow={castShadow}
     >
       <meshStandardMaterial color={partColor} />

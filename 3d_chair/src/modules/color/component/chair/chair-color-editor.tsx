@@ -10,8 +10,15 @@ const ChairColorEditor = () => {
   const { setColor: setSeatColor } = useChairSeatColor();
   const { setColor: setLegColor } = useChairLegsColor();
   return (
-    <>
-      <h1>Chair color</h1>
+    <div style={{
+        color : "#212121",
+        marginTop : "10px",
+        background : "#f1f2f6",
+        borderRadius : "10px",
+        padding : "20px"
+    }}>
+      <h1>CHAIR COLOR</h1>
+      <hr/>
       <ColorPalette
         title="Overall"
         onColorChange={(value) => {
@@ -35,7 +42,7 @@ const ChairColorEditor = () => {
         title="Legs"
         onColorChange={(value) => setLegColor(value)}
       />
-    </>
+    </div>
   );
 };
 

@@ -13,7 +13,7 @@ const ChairViewer = () => {
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      <div style={{ flex: 1, borderRight: "1px solid #ccc", padding: "10px" }}>
+      <div style={{ flex: 1, borderRight: "1px solid #ccc", padding: "10px", overflow : "auto" }}>
         <ChairEditor  />
       </div>
       <div style={{ flex: 1, borderRight: "1px solid #ccc", padding: "10px" }}>

@@ -7,6 +7,7 @@ import {
   useChairSeatColor,
 } from "./hooks/useChairColor";
 import ChairColorEditor from "./component/chair/chair-color-editor";
+import ChairSizeEditor from "../size/chair-size-editor";
 
 interface Props {}
 
@@ -35,7 +36,10 @@ const ChairEditor: React.FC<Props> = () => {
         {spinning === true ? "Stop spinning" : "Showcase mode"}
       </button>
 
-      <ChairColorEditor />
+      <div style={{ overflow: "auto" }}>
+        <ChairColorEditor />
+        {/* <ChairSizeEditor /> */}
+      </div>
     </div>
   );
 };

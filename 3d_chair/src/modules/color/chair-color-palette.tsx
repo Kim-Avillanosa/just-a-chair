@@ -48,13 +48,7 @@ const ColorPalette: React.FC<Props> = ({ title, onColorChange }) => {
 
   return (
     <div>
-      <strong
-        style={{
-          textAlign: "center",
-        }}
-      >
-        {title}
-      </strong>
+      <h3>{title}</h3>
       <div
         style={{
           display: "flex",
