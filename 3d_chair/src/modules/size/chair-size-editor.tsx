@@ -37,12 +37,11 @@ const ChairSizeEditor = () => {
       style={{
         color: "#212121",
         marginTop: "10px",
-        background: "#f1f2f6",
         borderRadius: "10px",
         padding: "20px",
       }}
     >
-      <h1>CHAIR STYLE</h1>
+      <h2>CHAIR STYLE</h2>
       <SizeRadioBox
         options={sizeOptions}
         onSizeChange={(e) => handleSizeChange(e)}

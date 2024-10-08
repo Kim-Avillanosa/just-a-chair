@@ -36,7 +36,16 @@ const ChairEditor: React.FC<Props> = () => {
         {spinning === true ? "Stop spinning" : "Showcase mode"}
       </button>
 
-      <div style={{ overflow: "auto" }}>
+      <div
+        style={{
+          overflow: "auto",
+          color: "#212121",
+          marginTop: "10px",
+          background: "#f1f2f6",
+          borderRadius: "10px",
+          padding: "20px",
+        }}
+      >
         <ChairSizeEditor />
         <ChairColorEditor />
       </div>
