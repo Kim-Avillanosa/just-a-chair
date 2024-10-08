@@ -14,7 +14,7 @@ const ChairLegs: React.FC<ChairProperties> = ({ size }) => {
   const router = useRouter();
 
   const {
-    query: { legs },
+    query: { legs, size: querySize },
   } = router;
 
   const castShadow = useShadow((x) => x.castShadow);
@@ -23,22 +23,34 @@ const ChairLegs: React.FC<ChairProperties> = ({ size }) => {
 
   const currentColor = Array.isArray(legs) ? legs[0] : legs ?? partColor;
 
+  const currentSize = Array.isArray(querySize)
+    ? querySize[0]
+    : querySize ?? size;
+
   return (
     <>
       <mesh position={[-0.9, 1, -0.9]} castShadow={castShadow}>
-        <cylinderGeometry args={legHeightScheme[size]} />
+        <cylinderGeometry
+          args={legHeightScheme[currentSize as keyof ChairSize]}
+        />
         <meshStandardMaterial color={currentColor} />
       </mesh>
       <mesh position={[0.9, 1, -0.9]} castShadow={castShadow}>
-        <cylinderGeometry args={legHeightScheme[size]} />
+        <cylinderGeometry
+          args={legHeightScheme[currentSize as keyof ChairSize]}
+        />
         <meshStandardMaterial color={currentColor} />
       </mesh>
       <mesh position={[-0.9, 1, 0.9]} castShadow={castShadow}>
-        <cylinderGeometry args={legHeightScheme[size]} />
+        <cylinderGeometry
+          args={legHeightScheme[currentSize as keyof ChairSize]}
+        />
         <meshStandardMaterial color={currentColor} />
       </mesh>
       <mesh position={[0.9, 1, 0.9]} castShadow={castShadow}>
-        <cylinderGeometry args={legHeightScheme[size]} />
+        <cylinderGeometry
+          args={legHeightScheme[currentSize as keyof ChairSize]}
+        />
         <meshStandardMaterial color={currentColor} />
       </mesh>
     </>

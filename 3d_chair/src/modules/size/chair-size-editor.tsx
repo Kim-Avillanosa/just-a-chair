@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useChairSizeStore } from "./hooks/useChairSize";
 import SizeRadioBox from "./size-radio-box";
 
@@ -7,7 +8,16 @@ type SizeOptionProps = {
 };
 
 const ChairSizeEditor = () => {
-  const { size, setSize } = useChairSizeStore((s) => s);
+  const router = useRouter();
+
+  const {
+    push,
+    pathname,
+    query,
+  } = router;
+
+  const { setSize } = useChairSizeStore((s) => s);
+
   const sizeOptions: SizeOptionProps[] = [
     { label: "Short", value: "short" },
     { label: "Medium", value: "medium" },
@@ -16,7 +26,10 @@ const ChairSizeEditor = () => {
   ];
 
   const handleSizeChange = (size: keyof ChairSize) => {
-    console.log("Selected Size:", size);
+    push({
+      pathname,
+      query: { ...query, size },
+    });
     setSize(size);
   };
   return (
@@ -30,7 +43,10 @@ const ChairSizeEditor = () => {
       }}
     >
       <h1>CHAIR STYLE</h1>
-      <SizeRadioBox options={sizeOptions} onSizeChange={e=> handleSizeChange(e)} />
+      <SizeRadioBox
+        options={sizeOptions}
+        onSizeChange={(e) => handleSizeChange(e)}
+      />
     </div>
   );
 };

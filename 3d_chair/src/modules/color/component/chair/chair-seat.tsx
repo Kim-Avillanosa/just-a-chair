@@ -22,11 +22,16 @@ const ChairSeat: React.FC<ChairSeatProps> = ({ size }) => {
   const router = useRouter();
 
   const {
-    query: { seat },
+    query: { seat, size: querySize },
   } = router;
 
+  const currentSize = Array.isArray(querySize)
+    ? querySize[0]
+    : querySize ?? size;
+
   const seatHeight = 2;
-  const seatPositionY = (legHeightScheme[size][2] + seatHeight) / 2;
+  const seatPositionY =
+    (legHeightScheme[currentSize as keyof ChairSize][2] + seatHeight) / 2;
 
   const currentColor = Array.isArray(seat) ? seat[0] : seat ?? partColor;
 

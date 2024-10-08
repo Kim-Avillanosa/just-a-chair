@@ -59,31 +59,29 @@ const ColorPalette: React.FC<Props> = ({ title, onColorChange }) => {
         }}
       >
         {predefinedColors.map((color) => (
-          <div>
-            <div
-              key={color}
-              onClick={() => handleColorClick(color)}
-              style={{
-                width: "30px",
-                height: "30px",
-                cursor: "pointer",
-                border:
-                  color === selectedColor
-                    ? "5px solid #ff3f34"
-                    : "2px solid #212121",
-                borderRadius: "10px",
-                backgroundColor: color,
-                transition: "transform 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.1)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-              }}
-            >
-              {color === selectedColor && "✅"}
-            </div>
+          <div
+            key={color}
+            onClick={() => handleColorClick(color)}
+            style={{
+              width: "30px",
+              height: "30px",
+              cursor: "pointer",
+              border:
+                color === selectedColor
+                  ? "5px solid #ff3f34"
+                  : "2px solid #212121",
+              borderRadius: "10px",
+              backgroundColor: color,
+              transition: "transform 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            {color === selectedColor && "✅"}
           </div>
         ))}
       </div>
