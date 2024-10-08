@@ -9,6 +9,7 @@ import {
 import ChairColorEditor from "./component/chair/chair-color-editor";
 import ChairSizeEditor from "../size/chair-size-editor";
 import { useRouter } from "next/router";
+import { useChairSizeStore } from "../size/hooks/useChairSize";
 
 interface Props {}
 
@@ -21,6 +22,7 @@ const ChairEditor: React.FC<Props> = () => {
   const { setColor: setBackRestColor } = useChairBackRestColor();
   const { setColor: setSeatColor } = useChairSeatColor();
   const { setColor: setLegColor } = useChairLegsColor();
+  const { setSize } = useChairSizeStore();
 
   const toggleBackground = () => (castShadow ? hideShadow() : showShadow());
 
@@ -39,6 +41,7 @@ const ChairEditor: React.FC<Props> = () => {
     setBackRestColor(defaultColor);
     setSeatColor(defaultColor);
     setLegColor(defaultColor);
+    setSize("medium");
   };
   return (
     <div>
