@@ -3,9 +3,7 @@ import ChairSeat from "./chair-seat";
 import ChairBackRest from "./chair-back-rest";
 import ChairLegs from "./chair-legs";
 
-export interface ChairProperties {
-  options: MeshStandardMaterialProps;
-}
+export interface ChairProperties {}
 
 const Chair = ({ ...rest }: ChairProperties) => {
   return (

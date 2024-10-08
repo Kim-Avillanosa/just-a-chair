@@ -7,21 +7,14 @@ import useShadow from "@/hooks/useShadow";
 import useChairSpin from "@/hooks/useChairSpin";
 
 const ChairViewer = () => {
-  const [chairColor, setColor] = useState("#a1662f");
   const { castShadow, backgroundColor } = useShadow();
   const { spinning } = useChairSpin();
-  const materialOptions: ChairProperties = useMemo(() => {
-    return {
-      options: {
-        color: chairColor,
-      },
-    };
-  }, [chairColor]);
+
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <div style={{ flex: 1, borderRight: "1px solid #ccc", padding: "10px" }}>
-        <ChairEditor onColorChange={(value) => setColor(value)} />
+        <ChairEditor  />
       </div>
       <div style={{ flex: 1, borderRight: "1px solid #ccc", padding: "10px" }}>
         <Canvas
@@ -50,7 +43,7 @@ const ChairViewer = () => {
             <planeGeometry args={[50, 50]} />
             <shadowMaterial opacity={0.5} />
           </mesh>
-          <Chair {...materialOptions} />
+          <Chair />
           <OrbitControls
             autoRotate={spinning}
             autoRotateSpeed={spinning ? 5.0 : 0}

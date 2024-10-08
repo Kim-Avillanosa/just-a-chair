@@ -1,10 +1,13 @@
 import useShadow from "@/hooks/useShadow";
 import { ChairProperties } from ".";
 import { RoundedBox } from "@react-three/drei";
+import { useMemo } from "react";
+import { useChairBackRestColor } from "../../hooks/useChairColor";
 
-const ChairBackRest: React.FC<ChairProperties> = ({ options }) => {
+const ChairBackRest: React.FC<ChairProperties> = () => {
+  const castShadow = useShadow((x) => x.castShadow);
 
-  const castShadow = useShadow(x => x.castShadow)
+  const { partColor } = useChairBackRestColor();
 
   return (
     <RoundedBox
@@ -14,7 +17,7 @@ const ChairBackRest: React.FC<ChairProperties> = ({ options }) => {
       smoothness={4}
       castShadow={castShadow}
     >
-      <meshStandardMaterial {...options} />
+      <meshStandardMaterial color={partColor} />
     </RoundedBox>
   );
 };
