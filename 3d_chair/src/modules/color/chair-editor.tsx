@@ -37,8 +37,8 @@ const ChairEditor: React.FC<Props> = () => {
       </button>
 
       <div style={{ overflow: "auto" }}>
+        <ChairSizeEditor />
         <ChairColorEditor />
-        {/* <ChairSizeEditor /> */}
       </div>
     </div>
   );
