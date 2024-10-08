@@ -1,7 +1,11 @@
+import useShadow from "@/hooks/useShadow";
 import { ChairProperties } from ".";
 import { RoundedBox } from "@react-three/drei";
 
-const ChairBackRest: React.FC<ChairProperties> = ({ castShadow, options }) => {
+const ChairBackRest: React.FC<ChairProperties> = ({ options }) => {
+
+  const castShadow = useShadow(x => x.castShadow)
+
   return (
     <RoundedBox
       position={[0, 3, -0.9]}

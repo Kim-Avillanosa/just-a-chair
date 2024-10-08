@@ -1,6 +1,9 @@
+import useShadow from "@/hooks/useShadow";
 import { ChairProperties } from ".";
 
-const ChairLegs: React.FC<ChairProperties> = ({ castShadow, options }) => {
+const ChairLegs: React.FC<ChairProperties> = ({ options }) => {
+    const castShadow = useShadow(x => x.castShadow)
+
     return (
         <>
             <mesh position={[-0.9, 1, -0.9]} castShadow={castShadow}>

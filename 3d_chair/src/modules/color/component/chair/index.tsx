@@ -4,7 +4,6 @@ import ChairBackRest from "./chair-back-rest";
 import ChairLegs from "./chair-legs";
 
 export interface ChairProperties {
-  castShadow: boolean;
   options: MeshStandardMaterialProps;
 }
 

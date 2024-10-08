@@ -1,26 +1,31 @@
+import useShadow from "@/hooks/useShadow";
 import ColorPalette from "./chair-color-palette";
-import { CanvasBackground } from "./chair-viewer";
+import useChairSpin from "@/hooks/useChairSpin";
 
 interface Props {
-    background: CanvasBackground;
-    isSpinning: boolean
-    onSpinningStateChanged: () => void
-    onThemeChange: () => void;
     onColorChange: (value: string) => void
 }
 
-const ChairEditor: React.FC<Props> = ({ background, isSpinning, onThemeChange, onColorChange, onSpinningStateChanged }) => {
+const ChairEditor: React.FC<Props> = ({ onColorChange }) => {
+    const { castShadow, backgroundColor, showShadow, hideShadow } = useShadow()
+    const { spinning, startSpinning, stopSpinning } = useChairSpin()
+
+
+    const toggleBackground = () => castShadow ? hideShadow() : showShadow()
+
+    const toggleSpinning = () => spinning ? stopSpinning() : startSpinning()
+
     return (
         <div>
             <h1>JUST A CHAIR 🪑</h1>
             <p>Because standing all day is a bit too 'un-standable'!</p>
             <hr />
-            <button onClick={onThemeChange}>
-                {background === "light" ? "Lights off" : "Lights on"}
+            <button onClick={toggleBackground}>
+                {backgroundColor !== "#ffffff" ? "Lights off" : "Lights on"}
             </button>
 
-            <button onClick={onSpinningStateChanged}>
-                {isSpinning === true ? "Stop spinning" : "Showcase mode"}
+            <button onClick={toggleSpinning}>
+                {spinning === true ? "Stop spinning" : "Showcase mode"}
             </button>
             <ColorPalette onColorChange={onColorChange} />
         </div>
