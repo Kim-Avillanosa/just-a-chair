@@ -7,8 +7,8 @@ const ChairLegs: React.FC<ChairProperties> = ({ size }) => {
   const legHeightScheme: ChairSize = {
     short: [0.1, 0.1, 1, 32],
     medium: [0.1, 0.1, 2, 32],
-    long: [0.1, 0.1, 3, 32], // increased for a longer leg
-    extraLong: [0.1, 0.1, 4, 32], // increased further for an extra-long leg
+    long: [0.1, 0.1, 3, 32],
+    extraLong: [0.1, 0.1, 4, 32],
   };
 
   const router = useRouter();
