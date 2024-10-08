@@ -23,25 +23,27 @@ const ColorPalette: React.FC<Props> = ({ title, onColorChange }) => {
     "#F79F1F",
     "#7d5fff",
     "#f5f6fa",
-    "#ffd1dc",  // Soft Pink
-    "#ff9aa2",  // Coral Pink
-    "#ffb7b2",  // Peach
-    "#ffdac1",  // Apricot
-    "#c7ceea",  // Lavender
-    "#a0e7e5",  // Aqua
-    "#b4f8c8",  // Mint Green
-    "#fbe7c6",  // Light Peach
-    "#ffadad",  // Rosy Pink
-    "#9ae4ea",  // Light Sky Blue
-    "#a3a1ff",  // Periwinkle
-    "#fcd1d1",  // Light Rose
-    "#ffe5b9",  // Cream Yellow
-    "#f9f7cf",  // Light Butter
+    "#ffd1dc", // Soft Pink
+    "#ff9aa2", // Coral Pink
+    "#ffb7b2", // Peach
+    "#ffdac1", // Apricot
+    "#c7ceea", // Lavender
+    "#a0e7e5", // Aqua
+    "#b4f8c8", // Mint Green
+    "#fbe7c6", // Light Peach
+    "#ffadad", // Rosy Pink
+    "#9ae4ea", // Light Sky Blue
+    "#a3a1ff", // Periwinkle
+    "#fcd1d1", // Light Rose
+    "#ffe5b9", // Cream Yellow
+    "#f9f7cf", // Light Butter
   ];
 
   const handleColorClick = (color: string) => {
-    setSelectedColor(color);
-    onColorChange(color);
+    if (color !== selectedColor) {
+      setSelectedColor(color);
+      onColorChange(color);
+    }
   };
 
   return (
@@ -63,26 +65,32 @@ const ColorPalette: React.FC<Props> = ({ title, onColorChange }) => {
         }}
       >
         {predefinedColors.map((color) => (
-          <div
-            key={color}
-            onClick={() => handleColorClick(color)}
-            style={{
-              width: "40px",
-              height: "40px",
-              cursor: "pointer",
-              border:
-                color === selectedColor ? "5px solid #ff3f34" : "2px solid #212121",
-              borderRadius: "10px",
-              backgroundColor: color,
-              transition: "transform 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-            }}
-          />
+          <div>
+            <div
+              key={color}
+              onClick={() => handleColorClick(color)}
+              style={{
+                width: "30px",
+                height: "30px",
+                cursor: "pointer",
+                border:
+                  color === selectedColor
+                    ? "5px solid #ff3f34"
+                    : "2px solid #212121",
+                borderRadius: "10px",
+                backgroundColor: color,
+                transition: "transform 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.1)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              {color === selectedColor && "✅"}
+            </div>
+          </div>
         ))}
       </div>
     </div>
