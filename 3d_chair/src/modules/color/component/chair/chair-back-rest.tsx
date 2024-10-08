@@ -1,6 +1,7 @@
 import useShadow from "@/hooks/useShadow";
 import { RoundedBox } from "@react-three/drei";
 import { useChairBackRestColor } from "../../hooks/useChairColor";
+import { useRouter } from "next/router";
 
 interface ChairBackRestProps extends ChairProperties {
   size: keyof ChairSize; // Ensure legHeight is passed to ChairBackRest
@@ -10,7 +11,14 @@ const ChairBackRest: React.FC<ChairBackRestProps> = ({ size }) => {
   const castShadow = useShadow((x) => x.castShadow);
   const { partColor } = useChairBackRestColor();
 
-  // Define the leg height scheme to calculate position
+  const router = useRouter();
+
+  const {
+    query: { backRest },
+  } = router;
+
+  const currentColor = Array.isArray(backRest) ? backRest[0] : backRest ?? partColor;
+
   const legHeightScheme: ChairSize = {
     short: [0.1, 0.1, 1, 32],
     medium: [0.1, 0.1, 2, 32],
@@ -25,13 +33,13 @@ const ChairBackRest: React.FC<ChairBackRestProps> = ({ size }) => {
 
   return (
     <RoundedBox
-      position={[0, backRestPositionY, -0.9]} // Adjust the Y position based on leg height
+      position={[0, backRestPositionY, -0.9]}
       args={[2, backRestHeight, 0.2]}
       radius={0.1}
       smoothness={10}
       castShadow={castShadow}
     >
-      <meshStandardMaterial color={partColor} />
+      <meshStandardMaterial color={currentColor} />
     </RoundedBox>
   );
 };

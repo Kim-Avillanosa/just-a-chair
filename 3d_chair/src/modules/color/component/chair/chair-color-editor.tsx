@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import ColorPalette from "../../chair-color-palette";
 import {
   useChairBackRestColor,
@@ -6,22 +7,24 @@ import {
 } from "../../hooks/useChairColor";
 
 const ChairColorEditor = () => {
-  const { partColor, setColor: setBackRestColor } = useChairBackRestColor();
+  const router = useRouter();
+  const { push, pathname, query } = router;
+
+  const { setColor: setBackRestColor } = useChairBackRestColor();
   const { setColor: setSeatColor } = useChairSeatColor();
   const { setColor: setLegColor } = useChairLegsColor();
+
   return (
-    <div style={{
-        color : "#212121",
-        marginTop : "10px",
-        background : "#f1f2f6",
-        borderRadius : "10px",
-        padding : "20px"
-    }}>
+    <div style={{}}>
       <h1>CHAIR COLOR</h1>
-      <hr/>
+      <hr />
       <ColorPalette
         title="Overall"
         onColorChange={(value) => {
+          push({
+            pathname,
+            query: { ...query, backRest: value, seat: value, legs: value },
+          });
           setBackRestColor(value);
           setSeatColor(value);
           setLegColor(value);
@@ -29,18 +32,36 @@ const ChairColorEditor = () => {
       />
       <hr />
       <ColorPalette
-        title="Back rest"
-        onColorChange={(value) => setBackRestColor(value)}
+        title="Backrest"
+        onColorChange={(value) => {
+          push({
+            pathname,
+            query: { ...query, backRest: value },
+          });
+          setBackRestColor(value);
+        }}
       />
       <hr />
       <ColorPalette
         title="Seat"
-        onColorChange={(value) => setSeatColor(value)}
+        onColorChange={(value) => {
+          push({
+            pathname,
+            query: { ...query, seat: value },
+          });
+          setSeatColor(value);
+        }}
       />
       <hr />
       <ColorPalette
         title="Legs"
-        onColorChange={(value) => setLegColor(value)}
+        onColorChange={(value) => {
+          push({
+            pathname,
+            query: { ...query, legs: value },
+          });
+          setLegColor(value);
+        }}
       />
     </div>
   );
